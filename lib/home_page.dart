@@ -10,6 +10,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   var formKey = GlobalKey<FormState>();
 
   @override
@@ -25,6 +29,7 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(20),
           children: [
             TextFormField(
+              controller: nameController,
               keyboardType: TextInputType.name,
               decoration: const InputDecoration(
                 hintText: "Name",
@@ -36,6 +41,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             TextFormField(
+              controller: emailController,
               keyboardType: TextInputType.name,
               decoration: const InputDecoration(
                   hintText: "Email Address",
@@ -52,6 +58,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             TextFormField(
+              controller: passwordController,
               keyboardType: TextInputType.name,
               obscureText: true,
               decoration: const InputDecoration(
@@ -69,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     var isFormValid = formKey.currentState!.validate();
                     if (isFormValid) {
-                      print('Yehey all inputs are valid');
+                      // Save to database
                     }
                   },
                   child: const Text('Submit')
